@@ -18,6 +18,10 @@ export default {
     const SocketioServiceChat = new SocketioService()
     SocketioServiceChat.setupSocketConnection()
   },
+  beforeUnmount() {
+    const SocketioServiceChat = new SocketioService()
+    SocketioServiceChat.disconnect()
+  },
 }
 </script>
 <style scoped>
