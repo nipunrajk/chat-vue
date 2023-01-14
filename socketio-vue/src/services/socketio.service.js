@@ -5,7 +5,11 @@ export default class SocketioService {
   constructor() {}
   setupSocketConnection() {
     console.log('import.meta.env.VUE_APP_SOCKET_ENDPOINT', import.meta.env)
-    this.socket = io(import.meta.env.VITE_APP_SOCKET_ENDPOINT)
+    this.socket = io(import.meta.env.VITE_APP_SOCKET_ENDPOINT, {
+      auth: {
+        token: 'abc',
+      },
+    })
 
     this.socket.emit('my-message', 'Hello there from vue')
 

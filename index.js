@@ -19,6 +19,9 @@ io.on('connection', (socket) => {
     console.log('message: ', msg)
     io.emit('my broadcast', `server: ${msg}`)
   })
+
+  let token = socket.handshake.auth.token
+  console.log(token)
 })
 
 http.listen(3000, () => {
