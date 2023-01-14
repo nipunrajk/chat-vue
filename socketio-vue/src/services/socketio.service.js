@@ -5,7 +5,9 @@ export default class SocketioService {
   constructor() {}
   setupSocketConnection() {
     console.log('import.meta.env.VUE_APP_SOCKET_ENDPOINT', import.meta.env)
-    io(import.meta.env.VITE_APP_SOCKET_ENDPOINT)
+    this.socket = io(import.meta.env.VITE_APP_SOCKET_ENDPOINT)
+
+    this.socket.emit('my-message', 'Hello there from vue')
   }
   disconnect() {
     if (this.socket) {
