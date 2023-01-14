@@ -7,22 +7,19 @@
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
 <script>
 import SocketioService from './services/socketio.service.js'
-console.log(SocketioService)
 export default {
   name: 'App',
   components: {},
   created() {
-    console.log('hello', socketioService)
-    SocketioService.setupSocketConnection()
+    const SocketioServiceChat = new SocketioService()
+    SocketioServiceChat.setupSocketConnection()
   },
 }
 </script>
-
 <style scoped>
 .logo {
   height: 6em;

@@ -1,13 +1,10 @@
 import { io } from 'socket.io-client'
-// import.meta.env
-
-class SocketioService {
+console.log()
+export default class SocketioService {
   socket
   constructor() {}
-
   setupSocketConnection() {
-    this.socket = io(import.meta.env.VUE_APP_SOCKET_ENDPOINT)
+    console.log('import.meta.env.VUE_APP_SOCKET_ENDPOINT', import.meta.env)
+    io(import.meta.env.VITE_APP_SOCKET_ENDPOINT)
   }
 }
-
-export default new SocketioService()
