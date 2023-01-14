@@ -8,6 +8,10 @@ export default class SocketioService {
     this.socket = io(import.meta.env.VITE_APP_SOCKET_ENDPOINT)
 
     this.socket.emit('my-message', 'Hello there from vue')
+
+    this.socket.on('my broadcast', (data) => {
+      console.log(data)
+    })
   }
   disconnect() {
     if (this.socket) {
