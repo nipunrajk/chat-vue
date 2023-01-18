@@ -9,8 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.3",
     "socket.io-client": "^4.5.4",
-    "vue": "^3.2.45"
+    "vue": "^3.2.45",
+    "vue-socket.io": "^3.0.10"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",

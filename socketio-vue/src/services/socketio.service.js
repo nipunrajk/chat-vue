@@ -4,22 +4,20 @@ export default class SocketioService {
   socket
   constructor() {}
   setupSocketConnection() {
-    console.log('import.meta.env.VUE_APP_SOCKET_ENDPOINT', import.meta.env)
+    // console.log('import.meta.env.VUE_APP_SOCKET_ENDPOINT', import.meta.env)
     this.socket = io(import.meta.env.VITE_APP_SOCKET_ENDPOINT, {
-      auth: {
-        token: 'abc',
-      },
+      autoConnect: false,
     })
 
-    this.socket.emit('my-message', 'Hello there from vue')
+    this.socket.on('users', ({ users }) => {
+      // console.log(users)
 
-    this.socket.on('my broadcast', (data) => {
-      console.log(data)
+      // console.log('here from js', this.socket)
+      // removing self users
+      const index = users.findIndex((user) => user.userID === this.socket.id)
+      if (index > -1) {
+        users.splice(index, 1)
+      }
     })
-  }
-  disconnect() {
-    if (this.socket) {
-      this.socket.disconnect()
-    }
   }
 }
